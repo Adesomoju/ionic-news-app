@@ -1,21 +1,65 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar class="no-border-top no-border-top">
+    <ion-buttons slot="end">
+      <ion-menu-button class="text-blue pr-20"></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title class="text-blue text-left pl-20">Explore</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="px-20 parent">
+    <div>
+      <ion-searchbar placeholder="Search articles"></ion-searchbar>
+    </div>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="round-box-active">All</div>
+        </ion-col>
+        <ion-col>
+          <div class="round-box">Lifestyle</div>
+        </ion-col>
+        <ion-col>
+          <div class="round-box">Hot Issues</div>
+        </ion-col>
+        <ion-col>
+          <div class="round-box">Healthy</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div>
+      <div class="big-text my-15 text-blue">Hot topics</div>
+      <div>
+        <img src="../../assets/img/rectangle.png" alt="">
+      </div>
+      <div class="info-box">
+        <p class="text-blue">Finding your spoot: A photograpy suggestion sytem for placing...</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="item-space-between">
+        <div class="big-text my-15 text-blue">For you</div>
+        <ion-button fill="clear" size="small" color="dark">See All</ion-button>
+      </div>
+      <div class="scroll-horizontal">
+        <div class="scroll-item" *ngFor="let item of selectedContent">
+          <div class="" routerLink="/news-details">
+            <div>
+              <img style="height: 120px; width: 229px;" [src]="item.urlToImage">
+            </div>
+            <div class="news-date">{{item.publishedAt | date: 'mediumDate'}}</div>
+            <div class="news-title text-blue">
+              <p class="adjust-text">{{item.title}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </ion-content>
